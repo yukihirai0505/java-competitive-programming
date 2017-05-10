@@ -1,4 +1,4 @@
-package com.example.stack;
+package com.example.stack.test;
 
 import java.util.Stack;
 
