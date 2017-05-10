@@ -1,4 +1,4 @@
-package com.example.stack.svm1;
+package com.example.svm1;
 
 import java.io.FileOutputStream;
 import java.io.File;

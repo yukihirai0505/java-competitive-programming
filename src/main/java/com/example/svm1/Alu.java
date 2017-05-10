@@ -1,4 +1,4 @@
-package com.example.stack.svm1;
+package com.example.svm1;
 
 /**
  * ALU is Arithmetic Logic Unit for only add and multiply
