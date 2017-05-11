@@ -1,4 +1,4 @@
-package com.example.compiler.scanner;
+package com.example.originalLanguage.compiler.scanner;
 
 /**
  * Created by Yuky on 2017/05/11.

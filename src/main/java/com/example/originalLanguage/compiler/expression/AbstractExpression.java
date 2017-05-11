@@ -1,7 +1,7 @@
-package com.example.compiler.expression;
+package com.example.originalLanguage.compiler.expression;
 
-import com.example.compiler.scanner.Token;
-import com.example.compiler.scanner.TokenUtil;
+import com.example.originalLanguage.compiler.scanner.Token;
+import com.example.originalLanguage.compiler.scanner.TokenUtil;
 
 import java.util.ArrayList;
 import java.util.Iterator;

@@ -1,4 +1,4 @@
-package com.example.svm1;
+package com.example.originalLanguage.svm1;
 
 import java.io.File;
 import java.io.FileInputStream;

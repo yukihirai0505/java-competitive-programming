@@ -1,12 +1,11 @@
-package com.example.compiler;
+package com.example.originalLanguage.compiler;
 
-import com.example.compiler.expression.AbstractExpression;
-import com.example.compiler.parser.Parser;
-import com.example.compiler.scanner.Scanner;
-import com.example.compiler.scanner.Token;
+import com.example.originalLanguage.compiler.expression.AbstractExpression;
+import com.example.originalLanguage.compiler.parser.Parser;
+import com.example.originalLanguage.compiler.scanner.Scanner;
+import com.example.originalLanguage.compiler.scanner.Token;
 
 import java.io.File;
-import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.util.ArrayList;

@@ -1,6 +1,6 @@
-package com.example.compiler.expression;
+package com.example.originalLanguage.compiler.expression;
 
-import com.example.compiler.Compiler;
+import com.example.originalLanguage.compiler.Compiler;
 
 import java.util.ArrayList;
 import java.util.List;

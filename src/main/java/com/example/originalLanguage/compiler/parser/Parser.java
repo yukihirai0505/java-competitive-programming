@@ -1,8 +1,8 @@
-package com.example.compiler.parser;
+package com.example.originalLanguage.compiler.parser;
 
-import com.example.compiler.expression.*;
-import com.example.compiler.scanner.Token;
-import com.example.compiler.scanner.TokenUtil;
+import com.example.originalLanguage.compiler.expression.*;
+import com.example.originalLanguage.compiler.scanner.Token;
+import com.example.originalLanguage.compiler.scanner.TokenUtil;
 
 import java.util.List;
 import java.util.ListIterator;
