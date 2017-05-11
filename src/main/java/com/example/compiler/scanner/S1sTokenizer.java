@@ -1,4 +1,4 @@
-package com.example.compiler;
+package com.example.compiler.scanner;
 
 import java.util.Iterator;
 
@@ -39,7 +39,7 @@ public class S1sTokenizer implements Iterator {
             }
             String s = sb.toString();
             if (TokenUtil.isKeyword(s)) {
-                token = new Token(TokenUtil.KETWORD, s);
+                token = new Token(TokenUtil.KEYWORD, s);
             } else {
                 token = new Token(TokenUtil.IDENTIFIER, s);
             }

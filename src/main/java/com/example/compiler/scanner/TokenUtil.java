@@ -1,4 +1,4 @@
-package com.example.compiler;
+package com.example.compiler.scanner;
 
 import java.util.Arrays;
 import java.util.List;
@@ -15,7 +15,7 @@ public class TokenUtil {
     public static final int R_PAREN = 5; // )
     public static final int L_BRACE = 6; // {
     public static final int R_BRACE = 7; // }
-    public static final int KETWORD = 8; // 予約語
+    public static final int KEYWORD = 8; // 予約語
     public static final int IDENTIFIER = 9; // 識別子
     private static final String[] symbolsArray = {
             "+", "-", "*", "/", "(", ")", "{", "}",

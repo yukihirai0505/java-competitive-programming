@@ -1,4 +1,4 @@
-package com.example.compiler;
+package com.example.compiler.scanner;
 
 import java.io.BufferedReader;
 import java.io.FileReader;
@@ -52,7 +52,7 @@ public class SplitScanner {
     private Token createToken(String s) {
         Token token = null;
         if (TokenUtil.isKeyword(s)) {
-            token = new Token(TokenUtil.KETWORD, s);
+            token = new Token(TokenUtil.KEYWORD, s);
         } else if ("{".equals(s)) {
             token = new Token(TokenUtil.L_BRACE, s);
         } else if ("}".equals(s)) {

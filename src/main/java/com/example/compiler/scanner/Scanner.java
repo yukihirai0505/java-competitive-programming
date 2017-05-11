@@ -1,4 +1,4 @@
-package com.example.compiler;
+package com.example.compiler.scanner;
 
 import java.io.BufferedReader;
 import java.io.FileReader;
