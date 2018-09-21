@@ -2,9 +2,20 @@ package com.example;
 
 import java.util.ArrayDeque;
 import java.util.Deque;
+import java.util.Scanner;
 
 public class ReversePolishNotation {
-    public final int parseRPN(final String rpn) {
+
+    public static void main(String[] args) {
+        Scanner in = new Scanner(System.in);
+        // ex: 10 20 + 30 40 - * 50 2 / +
+        while (in.hasNextLine()) {
+            String s = in.nextLine();
+            System.out.println(parseRPN(s));
+        }
+    }
+
+    private static int parseRPN(final String rpn) {
         final Deque<Integer> stack = new ArrayDeque<Integer>();
 
         // 連続した空白文字をスペース１つ分に置き換える
