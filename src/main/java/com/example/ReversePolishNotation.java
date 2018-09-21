@@ -7,11 +7,13 @@ public class ReversePolishNotation {
     public final int parseRPN(final String rpn) {
         final Deque<Integer> stack = new ArrayDeque<Integer>();
 
-        String s = rpn.replaceAll("\\s+", " ");    //連続した空白文字をスペース１つ分に置き換える
+        // 連続した空白文字をスペース１つ分に置き換える
+        String s = rpn.replaceAll("\\s+", " ");
         final String[] arr = s.trim().split(" ");
 
+        // 数字
         for (String e : arr) {
-            if ('0' <= e.charAt(0) && e.charAt(0) <= '9') {    //数字
+            if ('0' <= e.charAt(0) && e.charAt(0) <= '9') {
                 stack.push(Integer.parseInt(e));
             } else {
                 int a = stack.pop();
@@ -21,7 +23,8 @@ public class ReversePolishNotation {
                         stack.push(b * a);
                         break;
                     case "/":
-                        stack.push(b / a);        //div/0 に注意
+                        // div/0 に注意
+                        stack.push(b / a);
 
                         break;
                     case "+":
