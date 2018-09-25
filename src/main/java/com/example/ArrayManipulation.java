@@ -3,36 +3,24 @@ package com.example;
 import java.io.BufferedWriter;
 import java.io.FileWriter;
 import java.io.IOException;
-import java.util.Arrays;
 import java.util.Scanner;
 
 public class ArrayManipulation {
 
     // Complete the arrayManipulation function below.
     private static long arrayManipulation(int n, int[][] queries) {
-        // nのサイズのarrayをつくる
-        long[] rows = new long[n];
-        // 配列の中のmax値を保存するarrayをつくる
-        long[] maxNums = new long[queries.length];
-        // queriesの列ごとに a to b のインデックスに k を足していく
-        for (int index = 0; index < queries.length; index++) {
-            int[] query = queries[index];
+        long maxNum = 0;
+        long[] sums = new long[n];
+        for (int[] query : queries) {
             int fromIndex = query[0] - 1;
-            int toIndex = query[1] - 1;
+            int toIndex = query[1];
             int insertNum = query[2];
-            for (int j = fromIndex; j <= toIndex; j++) {
-                rows[j] = rows[j] + insertNum;
+            for (int i = fromIndex; i < toIndex; i++) {
+                sums[i] += insertNum;
+                maxNum = Math.max(maxNum, sums[i]);
             }
-//            StringBuilder output = new StringBuilder();
-//            for (int row : rows) {
-//                output.append(String.valueOf(row)).append(" ");
-//            }
-//            System.out.println(output.toString());
-            // 計算が終わった後のmax値を保存する
-            maxNums[index] = Arrays.stream(rows).max().orElse(0);
         }
-        // 全ての計算が終わったらarrayのmax値を返す
-        return Arrays.stream(maxNums).max().orElse(0);
+        return maxNum;
     }
 
     private static final Scanner scanner = new Scanner(System.in);
