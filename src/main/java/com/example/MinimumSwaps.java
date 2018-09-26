@@ -11,6 +11,8 @@ import java.util.regex.*;
 public class MinimumSwaps {
     // Complete the minimumSwaps function below.
     private static int minimumSwaps(int[] arr) {
+        // TODO: 対象の値が次の値より大きい時、それ以降の一番小さい値とswapする
+        // swapしたカウントを返す
         return 0;
     }
 
