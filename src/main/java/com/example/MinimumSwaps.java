@@ -6,12 +6,25 @@ import java.io.IOException;
 import java.util.Scanner;
 
 public class MinimumSwaps {
-    // Complete the minimumSwaps function below.
+    // 対象の数字を本来あるべきインデックスにswapしていく
+    // ex: 3 7 6 9 1 8 10 4 2 5
     private static int minimumSwaps(int[] arr) {
-        int count = 0;
-        for (int i = 0; i < arr.length - 1; i++) {
-            if (i < arr[i] - 1) {
-                swap(i, Math.min(arr.length - 1, arr[i] - 1), arr);
+        int count = 0,
+                // 10 - 1 = 9
+                arrIndexLen = arr.length - 1;
+        for (int i = 0; i < arrIndexLen; i++) {
+            // i == 0 のとき a は 3
+            int a = arr[i];
+            // ex: 0 < 2(3-1)
+            if (i < a - 1) {
+                // 0番目と=>2番目(2,9の小さい方)をswapする
+                swap(i, Math.min(arrIndexLen, a - 1), arr);
+                // 6 7 3 9 1 8 10 4 2 5 でaの3は本来あるべきインデックス2番目に配置される
+                StringBuilder sb = new StringBuilder();
+                for (int num: arr) {
+                    sb.append(num);
+                }
+                System.out.println(sb.toString());
                 count++;
                 i--;
             }
