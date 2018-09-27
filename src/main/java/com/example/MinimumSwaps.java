@@ -1,19 +1,56 @@
 package com.example;
 
-import java.io.*;
-import java.math.*;
-import java.security.*;
-import java.text.*;
-import java.util.*;
-import java.util.concurrent.*;
-import java.util.regex.*;
+import java.io.BufferedWriter;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.util.OptionalInt;
+import java.util.Scanner;
 
 public class MinimumSwaps {
     // Complete the minimumSwaps function below.
     private static int minimumSwaps(int[] arr) {
-        // TODO: 対象の値が次の値より大きい時、それ以降の一番小さい値とswapする
-        // swapしたカウントを返す
-        return 0;
+        return swapCount(arr, 0);
+    }
+
+    private static int swapCount(int[] arr, int count) {
+        OptionalInt firstIndex = OptionalInt.empty(),
+                secondIndex = OptionalInt.empty();
+        for (int i = 0; i < arr.length - 1; i++) {
+            int a = arr[i],
+                    b = arr[i + 1];
+            if (secondIndex.isPresent()) {
+                if (arr[secondIndex.getAsInt()] > b) {
+                    secondIndex = OptionalInt.of(i + 1);
+                }
+            }
+            if (!firstIndex.isPresent()) {
+                if (a > b) {
+                    firstIndex = OptionalInt.of(i);
+                    secondIndex = OptionalInt.of(i + 1);
+                }
+            }
+        }
+        if (firstIndex.isPresent() && secondIndex.isPresent()) {
+            return swapCount(
+                    swap(arr, firstIndex.getAsInt(), secondIndex.getAsInt())
+                    , count + 1
+            );
+        } else {
+            StringBuilder sb = new StringBuilder();
+            for (int num : arr) {
+                sb.append(num);
+            }
+            System.out.println(sb.toString());
+            return count;
+        }
+    }
+
+    private static int[] swap(int[] arr, int first, int second) {
+        int firstNum = arr[first];
+        int secondNum = arr[second];
+        arr[first] = secondNum;
+        arr[second] = firstNum;
+        return arr;
     }
 
     private static final Scanner scanner = new Scanner(System.in);
