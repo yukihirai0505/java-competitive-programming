@@ -17,11 +17,11 @@ public class MinimumSwaps {
             int a = arr[i];
             // ex: 0 < 2(3-1)
             if (i < a - 1) {
-                // 0番目と=>2番目(2,9の小さい方)をswapする
-                swap(i, Math.min(arrIndexLen, a - 1), arr);
+                // 0番目と=>2番目(本来のインデックス)をswapする
+                swap(i, a - 1, arr);
                 // 6 7 3 9 1 8 10 4 2 5 でaの3は本来あるべきインデックス2番目に配置される
                 StringBuilder sb = new StringBuilder();
-                for (int num: arr) {
+                for (int num : arr) {
                     sb.append(num);
                 }
                 System.out.println(sb.toString());
