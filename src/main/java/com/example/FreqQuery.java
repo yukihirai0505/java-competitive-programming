@@ -26,7 +26,10 @@ public class FreqQuery {
                     map.put(num, map.getOrDefault(num, 0L) + 1);
                     break;
                 case 2:
-                    map.put(num, map.getOrDefault(num, 1L) - 1);
+                    long value = map.getOrDefault(num, 0L);
+                    if (value > 0) {
+                        map.put(num, value - 1);
+                    }
                     break;
                 case 3:
                     if (map.values().contains(num)) {
