@@ -32,7 +32,7 @@ public class FreqQuery {
                     }
                     break;
                 case 3:
-                    if (map.values().contains(num)) {
+                    if (map.containsValue(num)) {
                         result.add(1);
                     } else {
                         result.add(0);
