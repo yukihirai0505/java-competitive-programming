@@ -16,10 +16,28 @@ import static java.util.stream.Collectors.toList;
 public class FreqQuery {
 
     // Complete the freqQuery function below.
-    static List<Integer> freqQuery(List<List<Integer>> queries) {
-        // 1 => add
-        // 2 => delete
-        // 3 => check presence
+    private static List<Integer> freqQuery(List<List<Integer>> queries) {
+        List<Integer> result = new ArrayList<>();
+        Map<Long, Long> map = new HashMap<>();
+        queries.forEach(query -> {
+            long num = query.get(1);
+            switch (query.get(0)) {
+                case 1:
+                    map.put(num, map.getOrDefault(num, 0L) + 1);
+                    break;
+                case 2:
+                    map.put(num, map.getOrDefault(num, 1L) - 1);
+                    break;
+                case 3:
+                    if (map.values().contains(num)) {
+                        result.add(1);
+                    } else {
+                        result.add(0);
+                    }
+                    break;
+            }
+        });
+        return result;
     }
 
     public static void main(String[] args) throws IOException {
@@ -33,6 +51,6 @@ public class FreqQuery {
             add(Arrays.asList(2, 5));
             add(Arrays.asList(3, 2));
         }};
-        freqQuery(queries);
+        freqQuery(queries).forEach(System.out::println);
     }
 }
