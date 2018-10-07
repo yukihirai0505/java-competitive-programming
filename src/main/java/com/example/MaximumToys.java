@@ -14,9 +14,7 @@ public class MaximumToys {
         int sum = 0;
         for (int i = 0; i < prices.length; i++) {
             sum += prices[i];
-            if (sum >= k) {
-                return i;
-            }
+            if (sum >= k) return i;
         }
         return prices.length;
     }
