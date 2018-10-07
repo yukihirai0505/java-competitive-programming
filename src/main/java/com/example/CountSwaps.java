@@ -7,6 +7,25 @@ public class CountSwaps {
 
     // Complete the countSwaps function below.
     static void countSwaps(int[] a) {
+        int n = a.length;
+        int count = 0;
+        for (int ignored : a) {
+            for (int j = 0; j < n - 1; j++) {
+                if (a[j] > a[j + 1]) {
+                    swap(j, j + 1, a);
+                    count++;
+                }
+            }
+        }
+        System.out.println(String.format("Array is sorted in %d swaps.", count));
+        System.out.println(String.format("First Element: %d", a[0]));
+        System.out.println(String.format("Last Element: %d", a[a.length - 1]));
+    }
+
+    private static void swap(int first, int second, int[] arr) {
+        int tmp = arr[first];
+        arr[first] = arr[second];
+        arr[second] = tmp;
     }
 
     private static final Scanner scanner = new Scanner(System.in);
