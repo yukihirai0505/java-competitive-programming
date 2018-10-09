@@ -1,12 +1,9 @@
 package com.example;
 
-import java.io.IOException;
-import java.util.Scanner;
-
 public class CountingValleys {
 
     // Complete the countingValleys function below.
-    static int countingValleys(int n, String s) {
+    private static int countingValleys(String s) {
         int level = 0;
         int count = 0;
         for (String step : s.split("")) {
@@ -23,9 +20,8 @@ public class CountingValleys {
         return count;
     }
 
-    private static final Scanner scanner = new Scanner(System.in);
-
-    public static void main(String[] args) throws IOException {
-        System.out.println(countingValleys(12, "DDUUDDUDUUUD"));
+    public static void main(String[] args) {
+        System.out.println(countingValleys("DDUUDDUDUUUD"));
+        System.out.println(countingValleys("UDDDUDUU"));
     }
 }
