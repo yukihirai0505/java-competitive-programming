@@ -1,4 +1,4 @@
-package com.example;
+package com.example.job;
 
 import java.util.ArrayDeque;
 import java.util.Deque;

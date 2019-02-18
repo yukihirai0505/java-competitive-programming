@@ -1,4 +1,4 @@
-package com.example;
+package com.example.job;
 
 class HillsAndVollyes {
     public int solution(int[] A) {
