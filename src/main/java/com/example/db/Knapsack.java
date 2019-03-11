@@ -3,7 +3,7 @@ package com.example.db;
 public class Knapsack {
 
     private static int max(int[][] a, int maxWeight) {
-        int[][] dp = new int[110][10010];
+        int[][] dp = new int[a.length + 1][maxWeight + 1];
         for (int w = 0; w <= maxWeight; w++) {
             dp[0][w] = 0;
         }
