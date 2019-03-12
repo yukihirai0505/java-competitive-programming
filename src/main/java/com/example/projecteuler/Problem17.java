@@ -5,10 +5,6 @@ import java.util.*;
 public class Problem17 {
     private static final String ZERO = "Zero";
     private static final String HUNDRED = "Hundred";
-    private static final String THOUSAND = "Thousand";
-    private static final String MILLION = "Million";
-    private static final String BILLION = "Billion";
-    private static final String TRILLION = "Trillion";
 
     private static final Map<Long, String> NUMBER_WORDS = new HashMap<Long, String>() {{
         put(0L, ZERO);
@@ -40,16 +36,27 @@ public class Problem17 {
         put(80L, "Eighty");
         put(90L, "Ninety");
         put(100L, HUNDRED);
-        put(1_000L, THOUSAND);
-        put(1_000_000L, MILLION);
-        put(1_000_000_000L, BILLION);
-        put(1_000_000_000_000L, TRILLION);
+        put(1_000L, "Thousand");
+        put(1_000_000L, "Million");
+        put(1_000_000_000L, "Billion");
+        put(1_000_000_000_000L, "Trillion");
     }};
 
-    private static int build(int index, List<Integer> numbers, String unit, StringBuilder result, boolean isLast) {
-        long n1 = 0;
-        long n2 = 0;
-        long n3 = 0;
+    private static int build(int index, List<Integer> numbers, StringBuilder result) {
+        long power = (long) Math.pow(10, index);
+        if (power == 1_000_000_000_000L) {
+            long number = numbers.get(index++);
+            if (number > 0) {
+                StringBuilder tmp = new StringBuilder();
+                tmp.append(NUMBER_WORDS.get(number));
+                tmp.append(" ");
+                tmp.append(NUMBER_WORDS.get(power));
+                tmp.append(" ");
+                result.insert(0, tmp);
+            }
+            return index;
+        }
+        long n1 = 0, n2 = 0, n3 = 0;
         if (index < numbers.size()) {
             n3 = numbers.get(index++);
         }
@@ -60,45 +67,36 @@ public class Problem17 {
             n1 = numbers.get(index++);
         }
         if (n1 > 0 || n2 > 0 || n3 > 0) {
-            StringBuilder temp = new StringBuilder();
+            StringBuilder tmp = new StringBuilder();
             if (n1 > 0) {
-                String wordNumber = NUMBER_WORDS.get(n1);
-                temp.append(wordNumber);
-                temp.append(" ");
-                temp.append(HUNDRED);
-                temp.append(" ");
+                tmp.append(NUMBER_WORDS.get(n1));
+                tmp.append(" ");
+                tmp.append(HUNDRED);
+                tmp.append(" ");
             }
             if (n2 > 1) {
                 n2 *= 10;
-                String wordNumber = NUMBER_WORDS.get(n2);
-                temp.append(wordNumber);
-                temp.append(" ");
-
+                tmp.append(NUMBER_WORDS.get(n2));
+                tmp.append(" ");
                 if (n3 > 0) {
-                    wordNumber = NUMBER_WORDS.get(n3);
-                    temp.append(wordNumber);
-                    temp.append(" ");
+                    tmp.append(NUMBER_WORDS.get(n3));
+                    tmp.append(" ");
                 }
             } else {
-                String concat = String.valueOf(n2)
-                        + String.valueOf(n3);
-                long n = Long.parseLong(concat);
-                if (!isLast) {
-                    String wordNumber = NUMBER_WORDS.get(n);
-                    temp.append(wordNumber);
-                    temp.append(" ");
-                }
-                if (isLast && n > 0) {
-                    String wordNumber = NUMBER_WORDS.get(n);
-                    temp.append(wordNumber);
-                    temp.append(" ");
+                long n = Long.parseLong(String.valueOf(n2) + String.valueOf(n3));
+                if (power >= 1_000) {
+                    tmp.append(NUMBER_WORDS.get(n));
+                    tmp.append(" ");
+                } else if (n > 0) {
+                    tmp.append(NUMBER_WORDS.get(n));
+                    tmp.append(" ");
                 }
             }
-            if (!unit.equals("")) {
-                temp.append(unit);
-                temp.append(" ");
+            if (power >= 1_000) {
+                tmp.append(NUMBER_WORDS.get(power));
+                tmp.append(" ");
             }
-            result.insert(0, temp);
+            result.insert(0, tmp);
         }
         return index;
     }
@@ -122,28 +120,7 @@ public class Problem17 {
                 result.append(ZERO);
             }
             for (int index = 0; index < numbers.size(); ) {
-                long power = (long) Math.pow(10, index);
-                if (power >= 1_000_000_000_000L) {
-                    long number = numbers.get(index++);
-                    if (number > 0) {
-                        StringBuilder temp = new StringBuilder();
-                        String wordNumber = NUMBER_WORDS.get(number);
-                        temp.append(wordNumber);
-                        temp.append(" ");
-                        String wordPower = NUMBER_WORDS.get(power);
-                        temp.append(wordPower);
-                        temp.append(" ");
-                        result.insert(0, temp);
-                    }
-                } else if (power >= 1_000_000_000) {
-                    index = build(index, numbers, NUMBER_WORDS.get(1_000_000_000L), result, false);
-                } else if (power >= 1_000_000) {
-                    index = build(index, numbers, NUMBER_WORDS.get(1_000_000L), result, false);
-                } else if (power >= 1_000) {
-                    index = build(index, numbers, NUMBER_WORDS.get(1_000L), result, false);
-                } else {
-                    index = build(index, numbers, "", result, true);
-                }
+                index = build(index, numbers, result);
             }
             System.out.println(result.toString().trim());
         }
