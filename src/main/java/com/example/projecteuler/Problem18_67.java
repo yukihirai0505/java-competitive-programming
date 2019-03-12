@@ -2,7 +2,7 @@ package com.example.projecteuler;
 
 import java.util.*;
 
-public class Problem18 {
+public class Problem18_67 {
 
     private static final Scanner scanner = new Scanner(System.in);
 
