@@ -6,7 +6,7 @@ public class Problem82 {
 
     private static final Scanner scanner = new Scanner(System.in);
 
-    private static long maxSum(int[][] matrix) {
+    private static long minSum(int[][] matrix) {
         int matrixSize = matrix.length;
         long[] dp = new long[matrixSize];
         for (int i = 0; i < matrixSize; i++) {
@@ -36,7 +36,7 @@ public class Problem82 {
                     mtrix[j][k] = Integer.parseInt(next[k]);
                 }
             }
-            System.out.println(maxSum(mtrix));
+            System.out.println(minSum(mtrix));
         }
         scanner.close();
     }
