@@ -121,9 +121,9 @@ public class QueensAttack {
         reachableSquares += (cBR != -1) ? (cBR - cQueen - 1) : Math.min(n - cQueen, rQueen - 1);
         // Bottom Left
         reachableSquares += (rBL != -1) ? (cQueen - cBL - 1) : Math.min(cQueen - 1, rQueen - 1);
-        // TopLeft
+        // Top Left
         reachableSquares += (cTL != -1) ? (cQueen - cTL - 1) : Math.min(cQueen - 1, n - rQueen);
-        // TopRight
+        // Top Right
         reachableSquares += (rTR != -1) ? (cTR - cQueen - 1) : Math.min(n - cQueen, n - rQueen);
         return reachableSquares;
     }
